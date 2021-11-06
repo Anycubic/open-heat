@@ -102,13 +102,13 @@ unsigned long open_heat::heating::RadiatorValve::loop()
         && rtc::read().setTemp - temp > largeTempDiff) {
         openTime *= 10;
       } else if (predictDiff >= 2) {
-        openTime = 3000;
+        openTime = 1250;
       } else if (predictDiff >= 1.5) {
-        openTime = 2500;
-      } else if (predictDiff >= 1) {
-        openTime = 1500;
-      } else if (predictDiff >= 0.5) {
         openTime = 1000;
+      } else if (predictDiff >= 1) {
+        openTime = 750;
+      } else if (predictDiff >= 0.5) {
+        openTime = 500;
       }
 
       openValve(openTime);
